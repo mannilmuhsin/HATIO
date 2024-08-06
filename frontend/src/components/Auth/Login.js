@@ -1,12 +1,11 @@
-// src/components/Auth/Login.js
-import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const { loginUser } = useAuth();
   const navigate = useNavigate();
 
@@ -15,18 +14,18 @@ const Login = () => {
     try {
       await loginUser({ username, password });
       Swal.fire({
-        icon: 'success',
-        title: 'Login successful!',
-        timer: 1500, 
-        text: 'You have been logged in successfully.',
+        icon: "success",
+        title: "Login successful!",
+        timer: 1500,
+        text: "You have been logged in successfully.",
       });
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
       Swal.fire({
-        icon: 'error',
-        title: 'Login failed',
-        text: 'Please check your credentials and try again.',
+        icon: "error",
+        title: "Login failed",
+        text: "Please check your credentials and try again.",
       });
     }
   };

@@ -1,14 +1,12 @@
-// Import necessary modules using ESM syntax
 import express from "express";
-import auth from "../middleware/auth.js"; // Ensure to include the .js extension
+import auth from "../middleware/auth.js";
 import {
   createTodo,
   getTodos,
   updateTodo,
   deleteTodo,
-} from "../controllers/todoController.js"; // Ensure to include the .js extension
+} from "../controllers/todoController.js";
 
-// Create an instance of the express router
 const router = express.Router();
 
 // Apply the auth middleware to all routes in this router
@@ -20,5 +18,4 @@ router.get("/:projectId", getTodos);
 router.patch("/:projectId/:id", updateTodo);
 router.delete("/:projectId/:id", deleteTodo);
 
-// Export the router as the default export
 export default router;

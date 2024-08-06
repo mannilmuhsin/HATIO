@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"; // Import icons from v2
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Header = () => {
   const { isAuthenticated, logoutUser } = useAuth();
@@ -17,7 +17,6 @@ const Header = () => {
     <header className="bg-gradient-to-r from-gray-700 to-indigo-800 text-white shadow-lg">
       <nav className="container mx-auto py-4 px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <div className="text-2xl font-bold">
             <Link
               to="/"
@@ -27,7 +26,6 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 items-center">
             {isAuthenticated && (
               <li>
@@ -70,7 +68,6 @@ const Header = () => {
             )}
           </ul>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -83,7 +80,6 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <ul className="mt-4 md:hidden space-y-4">
             <li>

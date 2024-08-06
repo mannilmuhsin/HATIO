@@ -1,4 +1,3 @@
-// src/components/Todos/TodoItem.js
 import React, { useState } from 'react';
 import { updateTodo, deleteTodo } from '../../services/todoService';
 import { FaEdit, FaTrash, FaCheckCircle, FaCircle } from 'react-icons/fa';

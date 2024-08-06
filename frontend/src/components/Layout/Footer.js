@@ -1,19 +1,17 @@
-// src/components/Layout/Footer.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaLinkedinIn,
   FaGithub,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-300 py-10 px-20">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-        {/* Logo and Description */}
         <div className="flex flex-col items-center md:items-start">
           <Link
             to="/"
@@ -26,7 +24,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Links */}
         <div className="flex space-x-8">
           <div className="flex flex-col items-center md:items-start space-y-1">
             <h5 className="font-semibold text-white">Quick Links</h5>
@@ -72,7 +69,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Social Media Icons */}
         <div className="flex space-x-6">
           <a
             href="https://facebook.com"
@@ -117,7 +113,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
         &copy; 2024 Todo App. All rights reserved.
       </div>

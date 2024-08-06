@@ -1,4 +1,3 @@
-// Import necessary modules using ESM syntax
 import Project from "../models/Project.js";
 import Todo from "../models/Todo.js";
 import { createGist } from "../utils/githubGist.js";
@@ -79,43 +78,46 @@ export const deleteProject = async (req, res) => {
 
 // Export project summary function
 export const exportProjectSummary = async (req, res) => {
-  
   try {
-    // Find the project by ID and user ID
     const project = await Project.findOne({
       _id: req.params.id,
       user: req.user._id,
     });
-    
+
     if (!project) {
       return res.status(404).send();
     }
     console.log("hello");
 
-    // Find todos associated with the project
     const todos = await Todo.find({ project: project._id });
     const completedTodos = todos.filter((todo) => todo.status === "completed");
     const pendingTodos = todos.filter((todo) => todo.status === "pending");
 
-    // Format the summary in HTML
     const summary = `<h1>${project.title}</h1>
 
-<p><strong>Summary:</strong> ${completedTodos.length} / ${todos.length} completed</p>
+<p><strong>Summary:</strong> ${completedTodos.length} / ${
+      todos.length
+    } completed</p>
 
 <h2>Pending Todos</h2>
 <ul>
-  ${pendingTodos.map((todo) => `<li><input type="checkbox"> ${todo.description}</li>`).join("\n")}
+  ${pendingTodos
+    .map((todo) => `<li><input type="checkbox"> ${todo.description}</li>`)
+    .join("\n")}
 </ul>
 
 <h2>Completed Todos</h2>
 <ul>
-  ${completedTodos.map((todo) => `<li><input type="checkbox" checked> [x]  ${todo.description}</li>`).join("\n")}
+  ${completedTodos
+    .map(
+      (todo) =>
+        `<li><input type="checkbox" checked> [x]  ${todo.description}</li>`
+    )
+    .join("\n")}
 </ul>`;
 
-    // Create the Gist and send the URL
     const gistUrl = await createGist(project.title, summary);
     res.send({ gistUrl });
-
   } catch (error) {
     console.error("Error exporting project summary:", error);
     res.status(500).send(error);

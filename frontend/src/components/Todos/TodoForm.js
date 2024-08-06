@@ -1,28 +1,29 @@
-// src/components/Todos/TodoForm.js
-import React, { useState } from 'react';
-import { createTodo } from '../../services/todoService';
-import { FaPlus } from 'react-icons/fa';
+import React, { useState } from "react";
+import { createTodo } from "../../services/todoService";
+import { FaPlus } from "react-icons/fa";
 
 const TodoForm = ({ projectId, onTodoAdded }) => {
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!description.trim()) {
-      // Prevent submission if the description is empty or just whitespace
       return;
     }
     try {
       await createTodo(projectId, { description });
-      setDescription('');
+      setDescription("");
       onTodoAdded();
     } catch (error) {
-      console.error('Error creating todo:', error);
+      console.error("Error creating todo:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded-lg p-6 mb-4"
+    >
       <div className="mb-4">
         <label
           htmlFor="todo-description"

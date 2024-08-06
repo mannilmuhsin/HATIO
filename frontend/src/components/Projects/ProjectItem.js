@@ -1,17 +1,16 @@
-// src/components/Projects/ProjectItem.js
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   getProject,
   updateProject,
   exportProjectSummary,
-} from '../../services/projectService';
-import TodoList from '../Todos/TodoList';
-import { FaEdit, FaFileExport } from 'react-icons/fa';
+} from "../../services/projectService";
+import TodoList from "../Todos/TodoList";
+import { FaEdit, FaFileExport } from "react-icons/fa";
 
 const ProjectItem = () => {
   const [project, setProject] = useState(null);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const { id } = useParams();
 
@@ -25,7 +24,7 @@ const ProjectItem = () => {
       setProject(data);
       setTitle(data.title);
     } catch (error) {
-      console.error('Error fetching project:', error);
+      console.error("Error fetching project:", error);
     }
   };
 
@@ -35,25 +34,25 @@ const ProjectItem = () => {
       setIsEditing(false);
       fetchProject();
     } catch (error) {
-      console.error('Error updating project title:', error);
+      console.error("Error updating project title:", error);
     }
   };
 
   const handleExport = async () => {
     try {
       const gistUrl = await exportProjectSummary(id);
-      window.open(gistUrl, '_blank');
+      window.open(gistUrl, "_blank");
     } catch (error) {
-      console.error('Error exporting project summary:', error);
+      console.error("Error exporting project summary:", error);
     }
   };
 
-  if (!project) return <div className="text-center text-gray-500">Loading...</div>;
+  if (!project)
+    return <div className="text-center text-gray-500">Loading...</div>;
 
   return (
     <div className="container mx-auto p-6 bg-white shadow-md rounded-lg">
       <div className="flex justify-between items-center mb-4">
-        {/* Project Title */}
         {isEditing ? (
           <input
             type="text"
@@ -86,19 +85,6 @@ const ProjectItem = () => {
 
       {/* Todo List */}
       <TodoList projectId={id} />
-
-      {/* Project Details */}
-      {/* <div className="mt-6 text-gray-600">
-        <p>
-          <strong>Description:</strong> {project.description || 'No description provided.'}
-        </p>
-        <p>
-          <strong>Created At:</strong> {new Date(project.createdAt).toLocaleDateString()}
-        </p>
-        <p>
-          <strong>Last Updated:</strong> {new Date(project.updatedAt).toLocaleDateString()}
-        </p>
-      </div> */}
     </div>
   );
 };

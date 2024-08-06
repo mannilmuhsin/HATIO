@@ -1,28 +1,29 @@
-// src/components/Projects/ProjectForm.js
-import React, { useState } from 'react';
-import { createProject } from '../../services/projectService';
-import { FaPlusCircle } from 'react-icons/fa';
+import React, { useState } from "react";
+import { createProject } from "../../services/projectService";
+import { FaPlusCircle } from "react-icons/fa";
 
 const ProjectForm = ({ onProjectAdded }) => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) {
-      // Prevent submission if the title is empty or just whitespace
       return;
     }
     try {
       await createProject({ title });
-      setTitle('');
+      setTitle("");
       onProjectAdded();
     } catch (error) {
-      console.error('Error creating project:', error);
+      console.error("Error creating project:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 mb-6">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white shadow-md rounded-lg p-6 mb-6"
+    >
       <div className="mb-4">
         <label
           htmlFor="project-title"

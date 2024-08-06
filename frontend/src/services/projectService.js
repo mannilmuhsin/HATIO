@@ -1,8 +1,7 @@
-// src/services/projectService.js
-import api from './api';
+import api from "./api";
 
 export const getProjects = async () => {
-  const response = await api.get('/projects');
+  const response = await api.get("/projects");
   return response.data;
 };
 
@@ -12,7 +11,7 @@ export const getProject = async (id) => {
 };
 
 export const createProject = async (projectData) => {
-  const response = await api.post('/projects', projectData);
+  const response = await api.post("/projects", projectData);
   return response.data;
 };
 

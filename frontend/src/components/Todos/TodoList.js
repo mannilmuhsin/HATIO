@@ -1,8 +1,7 @@
-// src/components/Todos/TodoList.js
-import React, { useState, useEffect } from 'react';
-import { getTodos } from '../../services/todoService';
-import TodoItem from './TodoItem';
-import TodoForm from './TodoForm';
+import React, { useState, useEffect } from "react";
+import { getTodos } from "../../services/todoService";
+import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
 const TodoList = ({ projectId }) => {
   const [todos, setTodos] = useState([]);
@@ -16,7 +15,7 @@ const TodoList = ({ projectId }) => {
       const data = await getTodos(projectId);
       setTodos(data);
     } catch (error) {
-      console.error('Error fetching todos:', error);
+      console.error("Error fetching todos:", error);
     }
   };
 
@@ -31,7 +30,9 @@ const TodoList = ({ projectId }) => {
           ))}
         </ul>
       ) : (
-        <p className="text-gray-600">No todos available. Add a new todo to get started!</p>
+        <p className="text-gray-600">
+          No todos available. Add a new todo to get started!
+        </p>
       )}
     </div>
   );

@@ -1,4 +1,3 @@
-// Import the necessary modules using ESM syntax
 import mongoose from "mongoose";
 
 // Define the project schema
@@ -11,5 +10,4 @@ const projectSchema = new mongoose.Schema({
 // Create the Project model
 const Project = mongoose.model("Project", projectSchema);
 
-// Export the Project model as the default export
 export default Project;

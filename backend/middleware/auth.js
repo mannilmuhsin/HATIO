@@ -1,6 +1,5 @@
-// Import necessary modules using ESM syntax
 import jwt from "jsonwebtoken";
-import User from "../models/User.js"; // Ensure to include the .js extension
+import User from "../models/User.js";
 
 // Authentication middleware function
 const auth = async (req, res, next) => {
@@ -21,5 +20,4 @@ const auth = async (req, res, next) => {
   }
 };
 
-// Export the authentication middleware as the default export
 export default auth;

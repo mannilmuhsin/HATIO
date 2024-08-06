@@ -1,5 +1,4 @@
-// Import necessary modules using ESM syntax
-import Todo from '../models/Todo.js'; // Ensure to include the .js extension
+import Todo from '../models/Todo.js';
 
 // Create a new Todo item
 export const createTodo = async (req, res) => {
@@ -19,7 +18,7 @@ export const createTodo = async (req, res) => {
 export const getTodos = async (req, res) => {
   try {
     const todos = await Todo.find({ project: req.params.projectId })
-    .sort({ status: 1, updatedDate: -1 }); // Sort by status first, then by updatedDate
+    .sort({ status: 1, updatedDate: -1 });
   
     res.send(todos);
   } catch (error) {

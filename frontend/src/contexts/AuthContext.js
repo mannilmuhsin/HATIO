@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.js
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { login, register, logout } from "../services/authService";
 
@@ -14,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
-      // You might want to fetch user data here
     }
   }, []);
 

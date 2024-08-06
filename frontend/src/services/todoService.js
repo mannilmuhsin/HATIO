@@ -1,5 +1,4 @@
-// src/services/todoService.js
-import api from './api';
+import api from "./api";
 
 export const getTodos = async (projectId) => {
   const response = await api.get(`/todos/${projectId}`);

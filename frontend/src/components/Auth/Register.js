@@ -1,4 +1,3 @@
-// src/components/Auth/Register.js
 import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ const Register = () => {
         title: 'Registration Successful',
         text: 'You have been registered successfully! You can now log in.',
         icon: 'success',
-        timer: 1500, // Auto-closes after 1.5 seconds
+        timer: 1500,
         showConfirmButton: false
       }).then(() => {
         navigate('/login');
